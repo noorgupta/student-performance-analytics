@@ -24,7 +24,7 @@ function App() {
   // Fetch data from FastAPI
   useEffect(() => {
 
-    fetch('http://127.0.0.1:8000/api/analysis')
+    fetch(`${import.meta.env.VITE_API_URL}/api/analysis`)
 
       .then((response) => {
 
