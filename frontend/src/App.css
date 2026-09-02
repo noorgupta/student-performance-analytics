@@ -1,0 +1,447 @@
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 30px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  letter-spacing: -0.8px;
+}
+
+.header p {
+  margin: 0;
+  color: #667085;
+  font-size: 15px;
+}
+
+.badge {
+  padding: 9px 15px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px 60px;
+}
+
+
+/* ================================
+   SUMMARY CARDS
+================================ */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.card p {
+  margin: 0 0 12px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+
+
+/* ================================
+   SECTIONS
+================================ */
+
+.section {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.section-header {
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin: 0 0 6px;
+  font-size: 21px;
+}
+
+.section-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* ================================
+   CHARTS
+================================ */
+
+.chart-container {
+  width: 100%;
+  min-height: 300px;
+}
+
+.student-chart {
+  overflow-x: auto;
+}
+
+
+/* ================================
+   SUBJECT PROGRESS
+================================ */
+
+.subjects {
+  margin-top: 25px;
+  display: grid;
+  gap: 17px;
+}
+
+.subject-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.subject-info span {
+  color: #475467;
+}
+
+.subject-info strong {
+  color: #172033;
+}
+
+.progress {
+  height: 8px;
+  background: #eaecf0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #172033;
+  border-radius: 10px;
+}
+
+
+/* ================================
+   CORRELATION
+================================ */
+
+.correlation-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 20px;
+  padding: 16px 18px;
+
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.correlation-summary strong {
+  font-size: 24px;
+}
+
+.correlation-summary span {
+  color: #475467;
+  font-weight: 600;
+}
+
+
+/* ================================
+   PYTHON ANALYSIS
+================================ */
+
+.python-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.analysis-card {
+  padding: 22px;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  background: #fafbfc;
+}
+
+.analysis-card h3 {
+  margin: 0 0 18px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.analysis-number {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.analysis-card p {
+  margin: 0 0 15px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.student-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.student-list span {
+  padding: 6px 10px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* ================================
+   TABLE
+================================ */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+thead {
+  background: #f8fafc;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eaecf0;
+}
+
+th {
+  font-size: 13px;
+  color: #475467;
+  font-weight: 600;
+}
+
+td {
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #fafafa;
+}
+
+
+/* ================================
+   PERFORMANCE BADGES
+================================ */
+
+.performance {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.excellent {
+  background: #ecfdf3;
+  color: #027a48;
+}
+
+.good {
+  background: #eff8ff;
+  color: #175cd3;
+}
+
+.average {
+  background: #fffaeb;
+  color: #b54708;
+}
+
+.needs-improvement {
+  background: #fef3f2;
+  color: #b42318;
+}
+
+
+/* ================================
+   PERFORMERS
+================================ */
+
+.performers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.performer-card {
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.performer-card p {
+  margin: 0 0 12px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.performer-card h2 {
+  margin: 0 0 7px;
+  font-size: 23px;
+}
+
+.performer-card span {
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* ================================
+   OUTLIERS
+================================ */
+
+.outlier-result {
+  margin-top: 18px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f8fafc;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.outlier-result strong {
+  font-size: 28px;
+}
+
+.outlier-result span {
+  color: #667085;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .python-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .header {
+    padding: 30px 18px 25px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header h1 {
+    font-size: 27px;
+  }
+
+  main {
+    padding: 0 18px 40px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  .performers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .badge {
+    align-self: flex-start;
+  }
+
+}
