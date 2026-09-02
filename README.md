@@ -6,6 +6,22 @@ The application takes student performance data from a CSV dataset, performs stat
 
 ---
 
+## 🚀 Live Demo
+
+**Frontend:**  
+https://student-performance-analytics-brown.vercel.app/
+
+**Backend:**  
+https://student-performance-api-qwff.onrender.com
+
+**Live Analysis API:**  
+https://student-performance-api-qwff.onrender.com/api/analysis
+
+> **Note:** The backend is hosted on Render's free tier, so it may take a short time to wake up after a period of inactivity.
+
+---
+
+
 ## 📌 Project Overview
 
 Student Performance Analytics was created to demonstrate how Python-based data analysis can be integrated into a complete web application.
