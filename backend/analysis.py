@@ -1,8 +1,10 @@
 import numpy as np
 
 
-DATA_PATH = "data/student_performance.csv"
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "data" / "student_performance.csv"
 
 def load_data():
     return np.loadtxt(
