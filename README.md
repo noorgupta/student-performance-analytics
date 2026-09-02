@@ -1,427 +1,1225 @@
-# Student Performance Analytics
+# 📊 Student Performance Analytics
 
-A NumPy-based data analysis project that analyzes student academic performance using numerical computing, statistical analysis, data filtering, correlation analysis, outlier detection, normalization, and visualization.
+A full-stack student performance analytics dashboard that uses **NumPy for data analysis**, **FastAPI for the backend REST API**, and **React with Recharts for interactive data visualization**.
+
+The application takes student performance data from a CSV dataset, performs statistical and analytical operations using NumPy, exposes the results through a FastAPI API, and presents the results through a modern React dashboard.
+
+---
 
 ## 📌 Project Overview
 
-**Student Performance Analytics** is a mini data analysis project built with Python, NumPy, and Matplotlib.
+Student Performance Analytics was created to demonstrate how Python-based data analysis can be integrated into a complete web application.
 
-The project uses a CSV dataset containing student academic and behavioral information. NumPy is used to load, process, analyze, and transform the numerical data.
+The project started as a NumPy-based data analysis program and was later extended into a full-stack application with:
 
-The main purpose of this project is to learn and practically apply NumPy concepts by working with a real structured dataset rather than studying NumPy functions individually.
+- NumPy-based data processing
+- FastAPI REST API
+- React frontend
+- Interactive charts
+- Student performance tables
+- Statistical analysis
+- Correlation analysis
+- Outlier detection
+- Feature normalization
 
-## 🎯 Project Objectives
+The application provides both **analytical results** and a **visual dashboard** for understanding student performance.
 
-The project aims to:
+---
 
-* Understand NumPy arrays and their properties
-* Perform numerical calculations on structured data
-* Analyze student performance
-* Calculate statistical measures
-* Filter students using conditions
-* Analyze relationships between different features
-* Detect potential outliers
-* Normalize numerical features
-* Visualize analysis results
+# 🎯 Objectives
 
-## 🛠️ Technologies Used
+The main objectives of this project are:
 
-* **Python**
-* **NumPy**
-* **Matplotlib**
-* **CSV**
+1. Load and process student data using NumPy.
+2. Perform statistical analysis on student scores.
+3. Calculate individual student performance.
+4. Identify highest and lowest performers.
+5. Filter students using multiple conditions.
+6. Analyze relationships between study hours and performance.
+7. Calculate subject-to-subject correlations.
+8. Detect potential outliers.
+9. Normalize numerical features.
+10. Build a REST API using FastAPI.
+11. Connect a React frontend to the backend.
+12. Present the analysis using interactive charts and tables.
 
-## 📊 Dataset
+---
 
-The dataset contains information about **10 students**.
+# ✨ Features
 
-Each record contains the following fields:
+## 📁 Dataset Analysis
 
-| Column      | Description                                      |
-| ----------- | ------------------------------------------------ |
-| Student ID  | Unique identifier for each student               |
-| Math        | Mathematics score                                |
-| Python      | Python score                                     |
-| DSA         | Data Structures & Algorithms score               |
-| AI_ML       | Artificial Intelligence / Machine Learning score |
-| Attendance  | Student attendance percentage                    |
-| Study Hours | Student study hours                              |
+The application loads a CSV dataset containing student information.
 
-The dataset contains:
+The dataset includes:
 
-* **10 students**
-* **7 features/columns**
-* **70 numerical values**
+| Column | Description |
+|---|---|
+| Student ID | Unique student identifier |
+| Math | Mathematics score |
+| Python | Python programming score |
+| DSA | Data Structures and Algorithms score |
+| AI/ML | Artificial Intelligence / Machine Learning score |
+| Attendance | Student attendance percentage |
+| Study Hours | Average study hours |
 
-## 🧠 NumPy Concepts Used
+The current dataset contains:
 
-This project demonstrates several important NumPy concepts.
+- **10 students**
+- **7 columns**
+- **70 total values**
+- **2 dimensions**
+- **float64 data type**
 
-### Array Properties
+---
 
-* `shape`
-* `ndim`
-* `size`
-* `dtype`
+# 📈 Statistical Analysis
 
-### Indexing and Slicing
+The application calculates the following statistics for every subject:
 
-Examples include:
+- Mean
+- Median
+- Variance
+- Standard deviation
 
-```python
-data[:, 1:]
-data[:, 1:5]
-data[:, 0]
+### Example
+
+| Subject | Mean | Median | Variance | Standard Deviation |
+|---|---:|---:|---:|---:|
+| Math | 72.80 | 74.00 | 245.36 | 15.66 |
+| Python | 75.30 | 76.50 | 151.61 | 12.31 |
+| DSA | 68.90 | 70.00 | 272.49 | 16.51 |
+| AI/ML | 75.30 | 76.00 | 239.61 | 15.48 |
+
+---
+
+# 👨‍🎓 Student Performance Analysis
+
+The application calculates the average score of every student using the four subject scores:
+
+```text
+Math + Python + DSA + AI/ML
+--------------------------------
+              4
 ```
 
-These operations are used to select students, subjects, and individual features from the dataset.
+Each student's average is then used to determine their overall performance.
 
-### Statistical Operations
+### Performance Categories
 
-The project uses:
+| Average Score | Performance |
+|---:|---|
+| 90 and above | Excellent |
+| 80–89.99 | Good |
+| 60–79.99 | Average |
+| Below 60 | Needs Improvement |
 
-* `np.mean()`
-* `np.median()`
-* `np.min()`
-* `np.max()`
-* `np.var()`
-* `np.std()`
+---
 
-### Finding Maximum and Minimum
+# 🏆 Highest and Lowest Performers
 
-The project uses:
+The application automatically identifies:
 
-* `np.argmax()`
-* `np.argmin()`
+### Highest Performer
 
-to identify the highest- and lowest-performing students.
+**Student 107**
 
-### Boolean Indexing
+Average score:
 
-Students are filtered using conditions such as:
-
-```python
-python_scores > 80
+```text
+93.00
 ```
 
-Multiple conditions are also used with:
+### Lowest Performer
 
-```python
-&
-|
+**Student 110**
+
+Average score:
+
+```text
+46.25
 ```
 
-### Correlation Analysis
+---
 
-The project uses:
+# 🐍 Python Performance Analysis
+
+The application uses NumPy boolean indexing to perform conditional filtering.
+
+## Python Score > 80
+
+Students:
+
+```text
+101, 103, 107, 109
+```
+
+Total:
+
+```text
+4 students
+```
+
+---
+
+## Python > 80 AND Attendance > 90
+
+Students satisfying both conditions:
+
+```text
+101, 103, 107, 109
+```
+
+The condition is implemented using NumPy's element-wise AND operator:
+
+```python
+(python_scores > 80) & (attendance > 90)
+```
+
+---
+
+## Python > 90 OR Attendance > 95
+
+Students satisfying at least one condition:
+
+```text
+103, 107
+```
+
+The condition is implemented using NumPy's element-wise OR operator:
+
+```python
+(python_scores > 90) | (attendance > 95)
+```
+
+---
+
+# 🔗 Correlation Analysis
+
+The application analyzes the relationship between:
+
+- Study hours
+- Average student score
+
+The calculated correlation is approximately:
+
+```text
+0.9858
+```
+
+The direction is:
+
+```text
+Positive
+```
+
+This indicates a **strong positive linear relationship in the current dataset**: students who study more hours tend to have higher average scores.
+
+Correlation is calculated using:
 
 ```python
 np.corrcoef()
 ```
 
-to analyze relationships between:
+---
 
-* Study hours and average score
-* Different subject scores
+# 📚 Subject Correlation
 
-### Outlier Detection
+The application also calculates the correlation between all subjects.
 
-Potential outliers are identified using the rule:
-
-```text
-Mean ± 2 × Standard Deviation
-```
-
-### `np.where()`
-
-`np.where()` is used to locate the exact rows and columns containing potential outliers.
-
-### Broadcasting
-
-NumPy broadcasting is used during calculations such as:
-
-```python
-means - 2 * std
-```
-
-and during feature normalization.
-
-### Min-Max Normalization
-
-The project normalizes numerical features using:
+The resulting correlation matrix is:
 
 ```text
+[[1.0000  0.9709  0.9973  0.9987]
+ [0.9709  1.0000  0.9630  0.9723]
+ [0.9973  0.9630  1.0000  0.9973]
+ [0.9987  0.9723  0.9973  1.0000]]
+```
+
+The subjects are ordered as:
+
+```text
+Math
+Python
+DSA
+AI/ML
+```
+
+This shows that the subjects have strong positive correlations within this dataset.
+
+---
+
+# 🚨 Outlier Detection
+
+Potential outliers are detected using the statistical rule:
+
+```text
+Lower Bound = Mean - 2 × Standard Deviation
+
+Upper Bound = Mean + 2 × Standard Deviation
+```
+
+A value is considered a potential outlier when:
+
+```text
+value < lower bound
+```
+
+or:
+
+```text
+value > upper bound
+```
+
+For the current dataset:
+
+```text
+Potential Outliers: 0
+```
+
+---
+
+# ⚖️ Feature Normalization
+
+The application uses **Min-Max normalization** to scale numerical features between 0 and 1.
+
+The formula is:
+
+```text
+normalized value =
 (value - minimum) / (maximum - minimum)
 ```
 
-This transforms values to a range between **0 and 1**.
+This is implemented using NumPy:
 
-## 🔍 Analysis Performed
-
-### 1. Dataset Exploration
-
-The program displays:
-
-* Dataset shape
-* Number of dimensions
-* Total number of elements
-* Data type
-
-### 2. Subject-Wise Analysis
-
-For each subject, the project calculates:
-
-* Mean
-* Median
-* Variance
-* Standard deviation
-
-### 3. Student Average Performance
-
-The average of the four subject scores is calculated for every student.
-
-The project identifies:
-
-* Highest-performing student
-* Lowest-performing student
-
-### 4. Conditional Student Filtering
-
-The project identifies students based on conditions such as:
-
-* Python score greater than 80
-* Python score greater than 80 **AND** attendance greater than 90
-* Python score greater than 90 **OR** attendance greater than 95
-
-### 5. Correlation Analysis
-
-The relationship between study hours and average score is calculated.
-
-The project also generates a correlation matrix showing relationships between different subjects.
-
-### 6. Outlier Detection
-
-Potential subject-score outliers are detected using the mean ± 2 standard deviation method.
-
-The project also identifies:
-
-* Student ID
-* Subject containing the potential outlier
-
-### 7. Feature Normalization
-
-All numerical features are normalized using Min-Max normalization.
-
-This produces values between:
-
-```text
-0 and 1
+```python
+(feature - feature_min) / (feature_max - feature_min)
 ```
 
-## 📈 Visualizations
+Normalization is useful when features have different numerical ranges and need to be placed on a common scale.
 
-The project generates three visualizations.
+---
 
-### Average Score by Subject
+# 🖥️ Dashboard
 
-A bar chart comparing the average scores of:
+The React frontend converts the analysis results into an interactive dashboard.
 
-* Math
-* Python
-* DSA
-* AI/ML
+The dashboard contains:
 
-Saved as:
+### Summary Cards
 
-```text
-outputs/subject_performance.png
-```
+- Total Students
+- Highest Average
+- Lowest Average
+- Students with Python > 80
 
-### Study Hours vs Average Score
+### Performance Overview
 
-A scatter plot showing the relationship between study hours and overall average score.
+Interactive visualization of average score by subject.
 
-Saved as:
+### Student Performance
 
-```text
-outputs/study_hours_vs_average.png
-```
+Interactive chart showing the average score of every student.
 
-### Student Average Performance
+### Study Hours vs Performance
 
-A bar chart comparing the average score of every student.
-
-Saved as:
+Scatter plot showing the relationship between:
 
 ```text
-outputs/student_performance.png
+Study Hours
+      ↓
+Average Score
 ```
 
-## 📋 Current Results
+The correlation coefficient is displayed alongside the chart.
 
-Based on the current dataset:
+### Python Performance Analysis
 
-| Analysis                                 | Result      |
-| ---------------------------------------- | ----------- |
-| Highest Performing Student               | Student 107 |
-| Highest Average                          | 93.00       |
-| Lowest Performing Student                | Student 110 |
-| Lowest Average                           | 46.25       |
-| Students with Python > 80                | 4           |
-| Study Hours vs Average Score Correlation | 0.9858      |
-| Potential Subject Outliers               | 0           |
+Displays results for:
 
-The study-hours correlation of **0.9858** indicates a very strong positive linear relationship within this particular dataset.
+- Python > 80
+- Python > 80 AND Attendance > 90
+- Python > 90 OR Attendance > 95
 
-This result should not be generalized because the dataset contains only 10 students.
+### Student Details
 
-## 📁 Project Structure
+A table displaying:
+
+- Student ID
+- Average Score
+- Performance level
+
+### Highest Performer
+
+Highlights the student with the highest average.
+
+### Lowest Performer
+
+Highlights the student with the lowest average.
+
+### Outlier Analysis
+
+Displays the number of potential outliers detected.
+
+---
+
+# 📊 Visualizations
+
+The frontend uses **Recharts** to create interactive charts.
+
+The dashboard includes:
+
+1. Subject Performance Bar Chart
+2. Student Performance Bar Chart
+3. Study Hours vs Average Score Scatter Plot
+4. Subject Performance Progress Indicators
+5. Student Performance Table
+
+---
+
+# 🏗️ Application Architecture
+
+```text
+                    ┌──────────────────────┐
+                    │  student_performance │
+                    │       .csv            │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │        NumPy         │
+                    │                      │
+                    │ Data Processing      │
+                    │ Statistics           │
+                    │ Filtering            │
+                    │ Correlation          │
+                    │ Outlier Detection    │
+                    │ Normalization        │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │       FastAPI        │
+                    │                      │
+                    │    REST API          │
+                    │   /api/analysis      │
+                    └──────────┬───────────┘
+                               │
+                               │ JSON
+                               ▼
+                    ┌──────────────────────┐
+                    │        React         │
+                    │                      │
+                    │ Dashboard            │
+                    │ Charts               │
+                    │ Tables               │
+                    │ Statistics           │
+                    └──────────────────────┘
+```
+
+---
+
+# 🧰 Technology Stack
+
+## Backend
+
+- **Python**
+- **NumPy**
+- **FastAPI**
+- **Uvicorn**
+
+## Frontend
+
+- **React**
+- **Vite**
+- **JavaScript**
+- **Recharts**
+- **CSS**
+
+## Data
+
+- CSV
+
+## Development Tools
+
+- Git
+- GitHub
+- npm
+- Python Virtual Environment
+
+---
+
+# 📂 Project Structure
 
 ```text
 student-performance-analytics/
 │
+├── backend/
+│   ├── analysis.py
+│   └── main.py
+│
 ├── data/
 │   └── student_performance.csv
 │
-├── outputs/
-│   ├── subject_performance.png
-│   ├── study_hours_vs_average.png
-│   └── student_performance.png
+├── frontend/
+│   ├── public/
+│   │   ├── favicon.svg
+│   │   └── icons.svg
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── hero.png
+│   │   │   ├── react.svg
+│   │   │   └── vite.svg
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
 │
-├── main.py
-├── requirements.txt
+├── outputs/
+│   ├── student_performance.png
+│   ├── study_hours_vs_average.png
+│   └── subject_performance.png
+│
+├── .gitignore
 ├── README.md
-└── .gitignore
+└── requirements.txt
 ```
 
-## ⚙️ Installation
+---
 
-### 1. Clone the Repository
+# 🔄 Backend and Frontend Flow
+
+When the application is opened:
+
+```text
+React Frontend
+      │
+      │ HTTP GET
+      ▼
+GET /api/analysis
+      │
+      ▼
+FastAPI
+      │
+      ▼
+run_analysis()
+      │
+      ▼
+load_data()
+      │
+      ▼
+CSV Dataset
+      │
+      ▼
+NumPy Analysis
+      │
+      ▼
+JSON Response
+      │
+      ▼
+React Dashboard
+      │
+      ▼
+Charts + Tables + Statistics
+```
+
+---
+
+# 🔌 API
+
+The backend provides an analysis endpoint:
+
+```text
+GET /api/analysis
+```
+
+When running locally:
+
+```text
+http://127.0.0.1:8000/api/analysis
+```
+
+The API returns JSON containing:
+
+```text
+dataset
+subject_statistics
+student_performance
+highest_performer
+lowest_performer
+python_analysis
+correlation
+outliers
+normalized_features
+study_hours_performance
+```
+
+---
+
+# 📦 Example API Response
+
+A simplified response looks like:
+
+```json
+{
+  "dataset": {
+    "rows": 10,
+    "columns": 7,
+    "dimensions": 2,
+    "size": 70,
+    "data_type": "float64"
+  },
+  "highest_performer": {
+    "student_id": 107,
+    "average": 93.0
+  },
+  "lowest_performer": {
+    "student_id": 110,
+    "average": 46.25
+  },
+  "python_analysis": {
+    "count_above_80": 4
+  },
+  "correlation": {
+    "study_hours_vs_average": 0.9858,
+    "direction": "Positive"
+  },
+  "outliers": {
+    "total": 0
+  }
+}
+```
+
+---
+
+# 📖 NumPy Concepts Demonstrated
+
+This project demonstrates practical use of the following NumPy concepts.
+
+## Loading Data
+
+```python
+np.loadtxt()
+```
+
+Used to load the CSV dataset.
+
+---
+
+## Array Slicing
+
+```python
+data[:, 1:5]
+```
+
+Used to select subject scores.
+
+---
+
+## Mean
+
+```python
+np.mean()
+```
+
+Used to calculate average scores.
+
+---
+
+## Median
+
+```python
+np.median()
+```
+
+Used to calculate median subject scores.
+
+---
+
+## Variance
+
+```python
+np.var()
+```
+
+Used to measure score variation.
+
+---
+
+## Standard Deviation
+
+```python
+np.std()
+```
+
+Used to measure score dispersion.
+
+---
+
+## Maximum and Minimum
+
+```python
+np.max()
+np.min()
+```
+
+Used to find highest and lowest values.
+
+---
+
+## Argmax and Argmin
+
+```python
+np.argmax()
+np.argmin()
+```
+
+Used to find the index of the highest and lowest-performing students.
+
+---
+
+## Boolean Indexing
+
+```python
+python_scores > 80
+```
+
+Used to filter students.
+
+---
+
+## Multiple Conditions
+
+AND:
+
+```python
+(condition1) & (condition2)
+```
+
+OR:
+
+```python
+(condition1) | (condition2)
+```
+
+---
+
+## Correlation
+
+```python
+np.corrcoef()
+```
+
+Used to calculate relationships between variables.
+
+---
+
+## Min-Max Normalization
+
+```python
+(data - minimum) / (maximum - minimum)
+```
+
+Used to scale numerical values between 0 and 1.
+
+---
+
+# 🧪 Running the Project Locally
+
+## Prerequisites
+
+Make sure you have installed:
+
+- Python 3
+- Node.js
+- npm
+- Git
+
+---
+
+# 🐍 Backend Installation
+
+Clone the repository:
 
 ```bash
-git clone <your-github-repository-url>
+git clone <YOUR_REPOSITORY_URL>
 ```
 
-Move into the project directory:
+Move into the project:
 
 ```bash
 cd student-performance-analytics
 ```
 
-### 2. Create a Virtual Environment
+Create a virtual environment:
 
 ```bash
 python3 -m venv .venv
 ```
 
-### 3. Activate the Virtual Environment
+Activate the virtual environment.
 
-On Linux/macOS:
+### Linux / macOS
 
 ```bash
 source .venv/bin/activate
 ```
 
-### 4. Install Dependencies
+### Windows
 
-Install the required packages using the existing `requirements.txt`:
+```bash
+.venv\Scripts\activate
+```
+
+Install Python dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## ▶️ Run the Project
+---
+
+# ▶️ Start the Backend
+
+From the project root:
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+The backend will run at:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+# 📚 FastAPI Documentation
+
+FastAPI automatically provides interactive API documentation.
+
+Open:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+You can use the Swagger interface to test:
+
+```text
+GET /api/analysis
+```
+
+---
+
+# ⚛️ Frontend Installation
+
+Open another terminal.
+
+Move into the frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# ▶️ Start the Frontend
 
 Run:
 
 ```bash
-python3 main.py
+npm run dev
 ```
 
-The analysis results will be displayed in the terminal.
-
-The generated visualizations will be saved in:
+Vite will provide a local development URL, normally:
 
 ```text
-outputs/
+http://localhost:5173
 ```
 
-## 📦 Dependencies
+Open that address in your browser.
 
-The project uses:
+---
 
-```text
-numpy
-matplotlib
+# ⚙️ Running Both Servers
+
+You need two terminals.
+
+### Terminal 1 — Backend
+
+From the project root:
+
+```bash
+source .venv/bin/activate
+uvicorn backend.main:app --reload
 ```
 
-The exact installed versions are maintained in:
+### Terminal 2 — Frontend
+
+From the frontend directory:
+
+```bash
+npm run dev
+```
+
+Then open the frontend URL provided by Vite.
+
+---
+
+# 📋 Requirements
+
+Python dependencies are stored in:
 
 ```text
 requirements.txt
 ```
 
-## 🧪 Example Workflow
-
-The project follows this general data-analysis workflow:
+Example:
 
 ```text
-CSV Dataset
-     ↓
-Load Data with NumPy
-     ↓
-Explore Array Properties
-     ↓
-Select Features
-     ↓
-Calculate Statistics
-     ↓
-Analyze Student Performance
-     ↓
-Filter Data
-     ↓
-Calculate Correlations
-     ↓
-Detect Potential Outliers
-     ↓
-Normalize Features
-     ↓
-Visualize Results
+numpy==2.5.2
+fastapi
+uvicorn
 ```
 
-## 🎓 Learning Outcomes
+Frontend dependencies are managed using:
 
-By completing this project, I practiced using NumPy for:
+```text
+frontend/package.json
+```
 
-* Numerical data processing
-* Array manipulation
-* Indexing and slicing
-* Statistical calculations
-* Boolean indexing
-* Conditional filtering
-* Correlation analysis
-* Outlier detection
-* Broadcasting
-* Feature normalization
-* Vectorized numerical operations
+and:
 
-The project also provided practical experience in organizing Python functions and combining numerical analysis with data visualization.
+```text
+frontend/package-lock.json
+```
 
-## 🚀 Future Improvements
+---
 
-Possible future improvements include:
+# 🖼️ Generated Analysis Outputs
 
-* Using a larger and more realistic dataset
-* Adding additional statistical analysis
-* Adding more visualizations
-* Introducing Pandas for tabular data analysis
-* Building an interactive dashboard
-* Applying machine learning algorithms
-* Predicting student performance
-* Comparing different machine learning models
+The original NumPy analysis also generates static visualizations.
 
-## 👨‍💻 Project Purpose
+They are stored inside:
 
-This project was created as a practical learning project to strengthen Python and NumPy fundamentals before progressing toward **Machine Learning**.
+```text
+outputs/
+```
 
-The focus is on understanding the concepts behind numerical data analysis and applying them through a complete, hands-on project.
+Available outputs:
+
+```text
+student_performance.png
+study_hours_vs_average.png
+subject_performance.png
+```
+
+These files represent the analysis performed before integrating the React dashboard.
+
+---
+
+# 🛡️ Git and Project Hygiene
+
+The following files and directories are excluded from version control:
+
+```text
+.venv/
+__pycache__/
+*.pyc
+frontend/node_modules/
+frontend/dist/
+.env
+```
+
+This prevents unnecessary generated files and local environment files from being uploaded to GitHub.
+
+---
+
+# 🐛 Troubleshooting
+
+## FastAPI Installation Error
+
+If you see:
+
+```text
+error: externally-managed-environment
+```
+
+activate the project's virtual environment first:
+
+```bash
+source .venv/bin/activate
+```
+
+Then run:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Frontend `vite: not found`
+
+Move into the frontend directory:
+
+```bash
+cd frontend
+```
+
+Run:
+
+```bash
+npm install
+```
+
+Then:
+
+```bash
+npm run dev
+```
+
+---
+
+## Frontend Cannot Connect to Backend
+
+Make sure the FastAPI backend is running:
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+Then test:
+
+```text
+http://127.0.0.1:8000/api/analysis
+```
+
+If the endpoint returns JSON, the backend is working.
+
+---
+
+## CORS Error
+
+The FastAPI backend must allow requests from the React development server.
+
+For local development, the frontend normally runs on:
+
+```text
+http://localhost:5173
+```
+
+The backend CORS configuration should therefore include the frontend development origin.
+
+---
+
+# 🔐 Security Considerations
+
+This project currently uses a local CSV dataset and does not contain authentication.
+
+For a production application, additional security could include:
+
+- Authentication
+- Authorization
+- Input validation
+- Secure environment variables
+- HTTPS
+- Rate limiting
+- Database access controls
+- API security
+- Proper error handling
+
+---
+
+# 🚀 Future Improvements
+
+The project can be extended with:
+
+### Dataset Upload
+
+Allow users to upload their own CSV files.
+
+### Dynamic Analysis
+
+Automatically analyze uploaded datasets instead of using a fixed dataset.
+
+### Student Search
+
+Add search functionality for individual students.
+
+### Subject Filtering
+
+Allow users to analyze individual subjects.
+
+### Advanced Analytics
+
+Add:
+
+- Percentiles
+- Quartiles
+- Ranking
+- Distribution analysis
+- Regression analysis
+
+### Database Integration
+
+Replace the CSV dataset with a database such as:
+
+- PostgreSQL
+- MySQL
+
+### Authentication
+
+Add:
+
+- Login
+- Registration
+- User accounts
+- Role-based access
+
+### Dashboard Improvements
+
+Add:
+
+- Date filters
+- Subject filters
+- Student filters
+- Interactive tooltips
+- More charts
+- Export functionality
+
+### Deployment
+
+Deploy the application using cloud services.
+
+---
+
+# 💡 What I Learned
+
+Through this project, I practiced:
+
+- Python programming
+- NumPy
+- Numerical data analysis
+- Statistical calculations
+- Array manipulation
+- Boolean indexing
+- Data filtering
+- Correlation analysis
+- Outlier detection
+- Feature normalization
+- REST API development
+- FastAPI
+- React
+- Recharts
+- Frontend-backend integration
+- JSON data handling
+- Git and GitHub
+- Project organization
+
+---
+
+# 🎓 Academic Relevance
+
+This project demonstrates how concepts from **data analytics, Python programming, and web development** can be combined into a practical application.
+
+It can be used as an academic project to demonstrate:
+
+- NumPy programming
+- Statistical analysis
+- Data visualization
+- API development
+- Frontend development
+- Full-stack integration
+
+---
+
+# 📌 Current Dataset Results
+
+For the included dataset:
+
+| Metric | Result |
+|---|---:|
+| Total Students | 10 |
+| Highest Average | 93.00 |
+| Lowest Average | 46.25 |
+| Python > 80 | 4 |
+| Study Hours Correlation | 0.9858 |
+| Correlation Direction | Positive |
+| Potential Outliers | 0 |
+
+### Highest Performer
+
+```text
+Student 107
+Average: 93.00
+```
+
+### Lowest Performer
+
+```text
+Student 110
+Average: 46.25
+```
+
+---
+
+# 🌟 Project Highlights
+
+The main strength of this project is the integration of multiple technologies:
+
+```text
+NumPy
+  ↓
+Data Analysis
+  ↓
+FastAPI
+  ↓
+REST API
+  ↓
+React
+  ↓
+Recharts
+  ↓
+Interactive Dashboard
+```
+
+Instead of keeping the NumPy analysis as a terminal-only program, the project turns the analysis into a complete web-based analytics application.
+
+---
+
+# 👨‍💻 Author
+
+**Noor Gupta**
+
+Student Performance Analytics
+
+Built using:
+
+```text
+Python • NumPy • FastAPI • React • Recharts
+```
+
+---
+
+# 📄 License
+
+This project is intended for educational and portfolio purposes.
+
+You may modify and extend the project for learning and development.
